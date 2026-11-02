@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shalom - Registro de Datos</title>
+  
+  <!-- CORREGIDO: apunta directamente a styles.css en la raíz -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Iconos FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="mobile-body">
+  <div class="app-container">
+    
+    <header class="app-header">
+      <div class="logo">SHALOM <span class="dot">●</span></div>
+    </header>
+
+    <main class="main-content">
+      <div class="badge">
+        <span class="status-dot"></span> PASO 1 DE 2 • VALIDACIÓN RÁPIDA
+      </div>
+
+      <h1 class="title">Registro de Datos</h1>
+      <p class="subtitle">Ingresa tus datos personales para continuar con tu despacho seguro</p>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="header-info">
+            <i class="fa-solid fa-address-card icon-blue"></i>
+            <div>
+              <h3>Identidad y Envíos</h3>
+              <p>Validación RENIEC vinculada</p>
+            </div>
+          </div>
+          <i class="fa-solid fa-shield-halved icon-verified"></i>
+        </div>
+<form id="registerForm">
+          <div class="form-group">
+            <div class="label-row">
+              <label for="dni">DNI / DOCUMENTO</label>
+              <span class="verified-text"><i class="fa-solid fa-circle-check"></i> Verificado</span>
+            </div>
+            <div class="input-wrapper">
+              <i class="fa-solid fa-id-card input-icon"></i>
+              <input type="text" id="dni" placeholder="Ej. 72132589" required maxlength="8">
+              <button type="button" class="clear-btn" onclick="document.getElementById('dni').value=''">&times;</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="nombre">NOMBRE COMPLETO</label>
+            <div class="input-wrapper">
+              <i class="fa-regular fa-user input-icon"></i>
+              <input type="text" id="nombre" placeholder="Ingresa tus nombres y apellidos" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">CORREO ELECTRÓNICO</label>
+            <div class="input-wrapper">
+              <i class="fa-regular fa-envelope input-icon"></i>
+              <input type="email" id="email" placeholder="ejemplo@correo.com" required>
+            </div>
+          </div>
+
+          <div class="security-note">
+            <i class="fa-solid fa-lock"></i>
+            <span>Tus datos se encuentran encriptados bajo protocolo TLS 1.3</span>
+          </div>
+
+          <button type="submit" class="btn-primary">
+            INGRESO <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </form>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <i class="fa-solid fa-truck-fast"></i>
+          <div>
+            <strong>Rastreo 24/7</strong>
+            <p>GPS en tiempo real</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <i class="fa-solid fa-qrcode"></i>
+          <div>
+            <strong>Retiro Express</strong>
+            <p>Con código QR</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="app-footer">
+      <strong>SHALOM<sup>®</sup></strong>
+      <p>ENVÍOS A TODO EL PERÚ</p>
+    </footer>
+  </div>
+
+  <!-- CORREGIDO: apunta directamente a registro.js en la raíz -->
+  <script src="registro.js"></script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shalom - Mis Envíos</title>
+  
+  <!-- Estilos independientes -->
+  <link rel="stylesheet" href="envio.css">
+  
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="mobile-body">
+  <div class="app-container">
+    
+    <!-- Cabecera -->
+    <header class="app-header-nav">
+      <div class="logo">SHALOM <span class="dot">●</span></div>
+      <button class="profile-btn" id="btnProfile" title="Ver perfil">
+        <i class="fa-solid fa-user"></i>
+      </button>
+    </header>
+
+    <main class="main-content">
+      <div class="badge">
+        <span class="status-dot"></span> PANORAMA GENERAL DE ENVÍOS
+      </div>
+
+      <h1 class="title">Mis Envíos</h1>
+      <p class="subtitle">Sigue tus encomiendas en tiempo real a nivel nacional</p>
+
+      <!-- Tarjeta blanca principal -->
+      <div class="card">
+        
+        <div class="summary-header">
+          <h3>LISTADO DE GUÍAS</h3>
+          <span class="chip">3 activos</span>
+        </div>
+
+        <!-- Filtros de categoría -->
+        <div class="filter-tabs">
+          <button class="tab-btn active" data-filter="todos">Todos</button>
+          <button class="tab-btn" data-filter="transito">En tránsito</button>
+          <button class="tab-btn" data-filter="recoger">Listo para recoger</button>
+        </div>
+
+        <!-- Lista de envíos con su respectivo data-category -->
+        <div class="shipment-list">
+          
+          <div class="shipment-card" data-category="transito">
+            <div class="blue-bar"></div>
+            <div class="shipment-icon-box blue-bg">
+              <i class="fa-solid fa-truck-fast"></i>
+            </div>
+            <div class="shipment-details">
+              <strong>Guía #90218324</strong>
+              <p>Huancayo &rarr; Lima</p>
+              <small><i class="fa-regular fa-calendar"></i> 04/10/2026</small>
+            </div>
+            <span class="status-pill blue-pill">En tránsito</span>
+            <i class="fa-solid fa-chevron-right nav-arrow"></i>
+          </div>
+
+          <div class="shipment-card" data-category="recoger">
+            <div class="orange-bar"></div>
+            <div class="shipment-icon-box orange-bg">
+              <i class="fa-solid fa-box-archive"></i>
+            </div>
+            <div class="shipment-details">
+              <strong>Guía #70455210</strong>
+              <p>Lima &rarr; Cerro de Pasco</p>
+              <small><i class="fa-regular fa-calendar"></i> 03/10/2026</small>
+            </div>
+            <span class="status-pill orange-pill">Listo para recoger</span>
+            <i class="fa-solid fa-chevron-right nav-arrow"></i>
+          </div>
+
+          <div class="shipment-card" data-category="entregado">
+            <div class="green-bar"></div>
+            <div class="shipment-icon-box green-bg">
+              <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <div class="shipment-details">
+              <strong>Guía #80129311</strong>
+              <p>Lima &rarr; Arequipa</p>
+              <small><i class="fa-regular fa-calendar"></i> 01/10/2026</small>
+            </div>
+            <span class="status-pill green-pill">Entregado</span>
+            <i class="fa-solid fa-chevron-right nav-arrow"></i>
+          </div>
+
+        </div>
+
+        <!-- Rastrear nueva guía -->
+        <div class="new-guide-box" id="btnRastrearNueva" style="cursor: pointer;">
+          <div class="qr-box-small">
+            <i class="fa-solid fa-qrcode"></i>
+          </div>
+          <div class="new-guide-text">
+            <span>¿Tienes una nueva guía?</span>
+          </div>
+          <button class="btn-action-small">Rastrear +</button>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- Navegación inferior -->
+    <nav class="bottom-nav">
+      <a href="envio.html" class="nav-item active">
+        <i class="fa-solid fa-box"></i>
+        <span>Mis envíos</span>
+      </a>
+      <a href="#" class="nav-item" id="navRastreo">
+        <i class="fa-solid fa-barcode"></i>
+        <span>Rastreo</span>
+      </a>
+      <a href="#" class="nav-item" id="navCotizacion">
+        <i class="fa-solid fa-calculator"></i>
+        <span>Cotización</span>
+      </a>
+      <a href="#" class="nav-item" id="navAgencias">
+        <i class="fa-solid fa-location-dot"></i>
+        <span>Agencias</span>
+      </a>
+    </nav>
+
+  </div>
+
+  <script src="envio.js"></script>
+</body>
+</html>
