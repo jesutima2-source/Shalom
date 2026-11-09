@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shalom - Cotización de Envío</title>
+  <link rel="stylesheet" href="cotizacion.css">
+  <!-- CDN de FontAwesome para los iconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="mobile-body">
+
+  <div class="app-container">
+    <!-- Cabecera con botón de perfil corregido (id="btnProfile") -->
+    <header class="app-header-nav">
+      <div class="logo">SHALOM<span class="dot">•</span></div>
+      <button class="profile-btn" id="btnProfile" aria-label="Perfil">
+        <i class="fa-solid fa-user"></i>
+      </button>
+    </header>
+
+    <!-- Contenido con Scroll Interno -->
+    <div class="scrollable-content">
+      <main class="main-content">
+        <div class="badge">
+          <span class="status-dot"></span>
+          <span>TARIFARIO DINÁMICO 2026</span>
+        </div>
+        <h1 class="title">Cotizador Express</h1>
+        <p class="subtitle">Calcula al instante según peso y volumen nacional</p>
+
+        <!-- Tarjeta Blanca Principal -->
+        <div class="card">
+          <div class="summary-header">
+            <div>
+              <h3>Cotiza tu envío</h3>
+              <p style="font-size: 0.75rem; color: #64748b;">Rutas directas y seguras a todo el Perú</p>
+            </div>
+            <div class="truck-icon-box" style="background: #eff6ff; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #0056b3;">
+              <i class="fa-solid fa-truck"></i>
+            </div>
+          </div>
+
+          <!-- Origen y Destino -->
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label">ORIGEN</label>
+              <div class="select-wrapper">
+                <span class="dot-indicator blue-dot"></span>
+                <select id="select-origen">
+                  <option value="Huancayo" selected>Huancayo</option>
+                  <option value="Lima (Matriz)">Lima (Matriz)</option>
+                  <option value="Arequipa">Arequipa</option>
+                  <option value="Cusco">Cusco</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">DESTINO</label>
+              <div class="select-wrapper">
+                <span class="dot-indicator red-dot"></span>
+                <select id="select-destino">
+                  <option value="Cusco" selected>Cusco</option>
+                  <option value="Lima (Matriz)">Lima (Matriz)</option>
+                  <option value="Huancayo">Huancayo</option>
+                  <option value="Arequipa">Arequipa</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tipo de Envoltorio -->
+          <div class="section-block">
+            <label class="form-label">TIPO DE ENVOLTORIO</label>
+            <div class="packaging-options">
+              <div class="pkg-card active" data-pkg="sobre">
+                <div class="pkg-icon">✉️</div>
+                <span class="pkg-title">Sobre</span>
+                <span class="pkg-sub">Hasta 1 kg</span>
+              </div>
+              <div class="pkg-card" data-pkg="caja">
+                <div class="pkg-icon">📦</div>
+                <span class="pkg-title">Caja</span>
+                <span class="pkg-sub">Volumen medio</span>
+              </div>
+              <div class="pkg-card" data-pkg="bulto">
+                <div class="pkg-icon">🧳</div>
+                <span class="pkg-title">Bulto</span>
+                <span class="pkg-sub">Mercadería</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dimensiones y Peso -->
+          <div class="section-block">
+            <div class="dimensions-header">
+              <label class="form-label">DIMENSIONES Y PESO</label>
+              <span class="unit-helper">cm / kg</span>
+            </div>
+            <div class="dimensions-grid">
+              <div class="dimension-box">
+                <span>LARGO</span>
+                <input type="number" id="inp-largo" value="25">
+              </div>
+              <div class="dimension-box">
+                <span>ANCHO</span>
+                <input type="number" id="inp-ancho" value="15">
+              </div>
+              <div class="dimension-box">
+                <span>ALTO</span>
+                <input type="number" id="inp-alto" value="5">
+              </div>
+              <div class="dimension-box weight-highlight">
+                <span>PESO (KG)</span>
+                <input type="number" id="inp-peso" value="1.0" step="0.5">
+              </div>
+            </div>
+          </div>
+
+          <!-- Modalidad de Entrega -->
+          <div class="section-block">
+            <label class="form-label">MODALIDAD DE ENTREGA</label>
+            <div class="delivery-toggle">
+              <button class="delivery-btn active" data-delivery="agencia">
+                <i class="fa-solid fa-shop"></i>
+                <span>En agencia</span>
+              </button>
+              <button class="delivery-btn" data-delivery="domicilio">
+                <i class="fa-solid fa-house"></i>
+                <span>A domicilio</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Costo Estimado -->
+          <div class="cost-card">
+            <div class="cost-info">
+              <span>Costo estimado</span>
+              <div class="cost-sub">
+                <i class="fa-solid fa-circle-check"></i>
+                <span>Incluye IGV y rastreo</span>
+              </div>
+            </div>
+            <div class="cost-amount" id="cost-display">S/ 13.00</div>
+          </div>
+
+          <!-- Botón Cotizar -->
+          <button class="primary-btn" id="btn-submit">
+            <span>Cotizar envío</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+
+          <!-- Características -->
+          <div class="features-grid">
+            <div class="feature-pill">
+              <div class="feature-icon green">
+                <i class="fa-solid fa-shield-halved"></i>
+              </div>
+              <div class="feature-text">
+                <strong>Seguro Básico</strong>
+                <span>Hasta S/ 500 cubiertos</span>
+              </div>
+            </div>
+            <div class="feature-pill">
+              <div class="feature-icon blue">
+                <i class="fa-solid fa-bolt"></i>
+              </div>
+              <div class="feature-text">
+                <strong>Tránsito 24-48h</strong>
+                <span>Rutas terrestres</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </main>
+    </div>
+
+    <!-- Barra de Navegación Inferior Sincronizada -->
+    <nav class="bottom-nav">
+      <a href="../envios/envio.html" class="nav-item">
+        <i class="fa-solid fa-box"></i>
+        <span>Mis envíos</span>
+      </a>
+        <a href="cotizacion.html" class="nav-item active">
+        <i class="fa-solid fa-calculator"></i>
+        <span>Cotización</span>
+      </a>
+      <a href="../rastreo/rastreo.html" class="nav-item">
+        <i class="fa-solid fa-barcode"></i>
+        <span>Rastreo</span>
+      </a>
+      <a href="../ubicacion/ubicacion.html" class="nav-item">
+        <i class="fa-solid fa-location-dot"></i>
+        <span>Agencias</span>
+      </a>
+    </nav>
+  </div>
+
+  <script src="cotizacion.js"></script>
+</body>
+</html>

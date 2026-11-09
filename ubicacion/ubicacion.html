@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shalom - Ubica una Agencia</title>
+  <link rel="stylesheet" href="ubicacion.css">
+  <!-- CDN de FontAwesome para los iconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="mobile-body">
+
+  <div class="app-container">
+    <!-- Cabecera idéntica -->
+    <header class="app-header-nav">
+      <div class="logo">SHALOM<span class="dot">•</span></div>
+      <button class="profile-btn" id="btnProfile" aria-label="Perfil">
+        <i class="fa-solid fa-user"></i>
+      </button>
+    </header>
+
+    <!-- Contenido con Scroll Interno -->
+    <div class="scrollable-content">
+      <main class="main-content">
+        
+        <!-- Tarjeta Blanca Principal -->
+        <div class="card">
+          <div class="summary-header">
+            <div>
+              <h3>Ubica una agencia</h3>
+              <p style="font-size: 0.75rem; color: #64748b;">Encuentra puntos de entrega y recojo cercanos</p>
+            </div>
+            <button class="gps-target-btn" title="Mi ubicación actual">
+              <i class="fa-solid fa-location-crosshairs"></i>
+            </button>
+          </div>
+
+          <!-- Buscador de Ubicación -->
+          <div class="search-input-group">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" id="inputUbicacion" value="La Victoria, Lima" placeholder="Buscar distrito o dirección">
+            <button class="clear-btn" id="btnClear"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+
+          <!-- Filtros Horizontales -->
+          <div class="filter-pills-scroll">
+            <button class="pill-btn active"><i class="fa-solid fa-circle-check" style="font-size: 0.6rem;"></i> Abierto ahora</button>
+            <button class="pill-btn"><i class="fa-solid fa-square-parking"></i> Estacionamiento</button>
+            <button class="pill-btn"><i class="fa-solid fa-clock"></i> 24 Horas</button>
+          </div>
+
+          <!-- Mapa Mock / Contenedor Visual -->
+          <div class="map-container-mock">
+            <!-- Puntos flotantes en el mapa -->
+            <div class="map-pin pin-surco">Surco El Polo <i class="fa-solid fa-box"></i></div>
+            <div class="map-pin pin-borja">San Borja</div>
+            
+            <div class="map-pin pin-central active-pin">
+              <i class="fa-solid fa-star" style="color: #fbbf24;"></i> SHALOM Centro
+            </div>
+            
+            <div class="map-pin pin-canada">Agencia Canadá <i class="fa-solid fa-box"></i></div>
+            
+            <div class="map-gps-floating">
+              <i class="fa-solid fa-location-crosshairs"></i>
+            </div>
+
+            <!-- Tarjeta flotante sobre el mapa -->
+            <div class="map-floating-card">
+              <div class="map-card-info">
+                <span class="dot-indicator blue-dot" style="position: static; display: inline-block; margin-right: 4px;"></span>
+                <strong style="font-size: 0.8rem; color: var(--text-dark);">Shalom - Agencia Principal</strong>
+                <p style="font-size: 0.65rem; color: #64748b; margin: 2px 0;">Av. Paseo de la República 1420</p>
+                <div class="map-card-meta">
+                  <span style="color: #047857; font-weight: 700;">Abierto hasta las 20:00</span>
+                  <span style="color: #94a3b8;">•</span>
+                  <span style="color: #64748b;">A 1.8 km (7 min)</span>
+                </div>
+              </div>
+              <button class="btn-como-llegar">
+                <i class="fa-solid fa-diamond-turn-right"></i> Cómo llegar
+              </button>
+            </div>
+          </div>
+
+          <!-- Otras Agencias Disponibles -->
+          <div class="other-agencies-section">
+            <div class="other-header">
+              <span class="section-title-small">OTRAS AGENCIAS DISPONIBLES (4)</span>
+              <a href="#" class="ver-todas-link">Ver todas</a>
+            </div>
+
+            <!-- Item Agencia 1 -->
+            <div class="agency-item">
+              <div class="agency-icon-box">
+                <i class="fa-solid fa-shop"></i>
+              </div>
+              <div class="agency-details">
+                <strong>Agencia La Victoria - Luna Pizarro</strong>
+                <p>Jr. Luna Pizarro 642 - Recojo y Envíos</p>
+              </div>
+              <div class="agency-meta-right">
+                <span class="distance-text">0.9 km</span>
+                <span class="status-open">Abierto</span>
+              </div>
+            </div>
+
+            <!-- Item Agencia 2 -->
+            <div class="agency-item" style="margin-top: 8px;">
+              <div class="agency-icon-box">
+                <i class="fa-solid fa-shop"></i>
+              </div>
+              <div class="agency-details">
+                <strong>Agencia Lince - Petit Thouars</strong>
+                <p>Av. Petit Thouars 1822 - Carga express</p>
+              </div>
+              <div class="agency-meta-right">
+                <span class="distance-text">2.3 km</span>
+                <span class="status-open">Abierto</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Footer institucional interno -->
+        <div class="footer-brand-info">
+          <div class="logo" style="font-size: 1.1rem; text-align: center;">SHALOM<span class="dot">•</span></div>
+          <p>RED NACIONAL DE TRANSPORTE Y LOGÍSTICA</p>
+        </div>
+
+      </main>
+    </div>
+
+    <!-- Barra de Navegación Inferior Sincronizada -->
+    <nav class="bottom-nav">
+      <a href="../envios/envio.html" class="nav-item">
+        <i class="fa-solid fa-box"></i>
+        <span>Mis envíos</span>
+      </a>
+       <a href="../cotizacion/cotizacion.html" class="nav-item">
+        <i class="fa-solid fa-calculator"></i>
+        <span>Cotización</span>
+      <a href="../rastreo/rastreo.html" class="nav-item">
+        <i class="fa-solid fa-barcode"></i>
+        <span>Rastreo</span>
+      </a>
+      <a href="ubicacion.html" class="nav-item active">
+        <i class="fa-solid fa-location-dot"></i>
+        <span>Agencias</span>
+      </a>
+    </nav>
+  </div>
+
+  <script src="ubicacion.js"></script>
+</body>
+</html>
