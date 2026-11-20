@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shalom - Atención al Cliente</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <link rel="stylesheet" href="atencion.css" />
+</head>
+<body>
+  <div class="app-frame">
+    <!-- Cabecera superior -->
+    <header class="top-header">
+      <div class="header-left">
+        <button id="btnBack" class="btn-back" aria-label="Volver a Mis Envíos">
+          <i class="ph-bold ph-caret-left"></i>
+        </button>
+        <h1 class="page-title">Atención al Cliente</h1>
+      </div>
+
+      <!-- Botón rojo exacto con silueta blanca -->
+      <button id="btnProfile" class="btn-profile" aria-label="Detalle de usuario">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="#ffffff" aria-hidden="true">
+          <circle cx="12" cy="8" r="4" />
+          <path d="M5 19.5C5 16.4624 8.13401 14 12 14C15.866 14 19 16.4624 19 19.5V20.5H5V19.5Z" />
+        </svg>
+      </button>
+    </header>
+
+    <!-- Barra de estado superior -->
+    <div class="status-bar">
+      <div class="status-pill">
+        <span class="status-dot"></span>
+        <span>CENTRAL DE AYUDA ACTIVA</span>
+      </div>
+      <span class="app-version">v4.2 Shalom Pro</span>
+    </div>
+
+    <!-- Contenedor principal blanco redondeado -->
+    <main class="main-card">
+      <div class="card-header">
+        <div>
+          <h2>Atención al cliente</h2>
+          <p>Estamos aquí para resolver cualquier duda con tu envío</p>
+        </div>
+        <div class="support-badge">
+          <i class="ph-duotone ph-headset"></i>
+        </div>
+      </div>
+
+      <!-- Accesos rápidos enrutados a tus carpetas -->
+      <nav class="quick-nav" aria-label="Accesos rápidos">
+        <button class="nav-item active" data-route="../envios/envio.html">
+          <div class="nav-icon-box">
+            <i class="ph-bold ph-archive-box"></i>
+          </div>
+          <span>Mis envíos</span>
+        </button>
+
+        <button class="nav-item" data-route="../rastreo/rastreo.html">
+          <div class="nav-icon-box">
+            <i class="ph-bold ph-magnifying-glass"></i>
+          </div>
+          <span>Rastreo</span>
+        </button>
+
+        <button class="nav-item" data-route="../cotizacion/cotizacion.html">
+          <div class="nav-icon-box">
+            <i class="ph-bold ph-calculator"></i>
+          </div>
+          <span>Cotización</span>
+        </button>
+
+        <button class="nav-item" data-route="../ubicacion/ubicacion.html">
+          <div class="nav-icon-box">
+            <i class="ph-bold ph-map-pin"></i>
+          </div>
+          <span>Agencias</span>
+        </button>
+      </nav>
+
+      <!-- Opciones de soporte interactivas -->
+      <section class="support-options">
+        <button class="option-card" id="btnFaq">
+          <div class="option-icon blue">
+            <i class="ph-bold ph-question"></i>
+          </div>
+          <div class="option-text">
+            <h3>Preguntas frecuentes</h3>
+            <p>Plazos, tarifas y restricciones</p>
+          </div>
+          <i class="ph-bold ph-caret-right arrow-icon"></i>
+        </button>
+
+        <button class="option-card" id="btnBilling">
+          <div class="option-icon blue">
+            <i class="ph-bold ph-receipt"></i>
+          </div>
+          <div class="option-text">
+            <h3>Facturación y comprobantes</h3>
+            <p>Descarga tu boleta o factura</p>
+          </div>
+          <i class="ph-bold ph-caret-right arrow-icon"></i>
+        </button>
+
+        <button class="option-card" id="btnComplaints">
+          <div class="option-icon amber">
+            <i class="ph-bold ph-book-open-text"></i>
+          </div>
+          <div class="option-text">
+            <h3>Libro de reclamaciones</h3>
+            <p>Ingresa o consulta una solicitud formal</p>
+          </div>
+          <i class="ph-bold ph-caret-right arrow-icon"></i>
+        </button>
+      </section>
+
+      <!-- Banner WhatsApp -->
+      <button class="whatsapp-banner" id="btnWhatsapp">
+        <div class="wa-icon-box">
+          <i class="ph-fill ph-chat-teardrop-text"></i>
+        </div>
+        <div class="wa-content">
+          <div class="wa-title-row">
+            <h3>Escríbenos por WhatsApp</h3>
+            <span class="wa-online-dot"></span>
+          </div>
+          <p class="wa-subtitle">Respuesta directa con un asesor</p>
+          <span class="wa-schedule">Lun a Sáb: 8:00 am - 8:00 pm</span>
+        </div>
+        <div class="wa-arrow">
+          <i class="ph-bold ph-arrow-right"></i>
+        </div>
+      </button>
+
+      <!-- Pie de tarjeta -->
+      <div class="card-footer">
+        <div class="verified-badge">
+          <i class="ph-bold ph-lock-simple"></i>
+          <span>Canal oficial<br />verificado</span>
+        </div>
+        <button class="btn-bot" id="btnVirtualAssistant">
+          <i class="ph-fill ph-robot"></i>
+          <span>Asistente<br />virtual</span>
+        </button>
+      </div>
+    </main>
+
+    <!-- Aviso inferior dominical -->
+    <footer class="sunday-notice">
+      <div class="notice-icon">
+        <i class="ph-bold ph-clock"></i>
+      </div>
+      <div class="notice-text">
+        <h4>Horario de entregas dominicales</h4>
+        <p>
+          Nuestras agencias principales en Lima y provincias atienden recojos
+          urgentes los domingos de 9:00 am a 1:00 pm.
+        </p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Modal Dinámico -->
+  <div class="modal-overlay" id="modalOverlay" aria-hidden="true">
+    <div class="modal-sheet">
+      <div class="modal-header">
+        <h3 id="modalTitle">Título</h3>
+        <button id="btnCloseModal" class="btn-close-modal" aria-label="Cerrar">
+          <i class="ph-bold ph-x"></i>
+        </button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <script src="atencion.js"></script>
+</body>
+</html>
