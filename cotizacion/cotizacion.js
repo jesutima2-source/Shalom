@@ -1,0 +1,159 @@
+document.addEventListener('DOMContentLoaded', () => {
+  // Configuración de Supabase para guardar la cotización en la tabla public.envios
+  const SUPABASE_URL = 'https://owgmbdvzkpolnyabfkcp.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_x8MsmF6ThrrsCSLIY7VWiQ_VmesN0BY';
+
+  async function guardarEnvioEnSupabase(envio) {
+    try {
+      const montoNumerico =
+        typeof envio.total === 'number'
+          ? envio.total
+          : parseFloat(String(envio.total || '0').replace(/[^\d.]/g, '')) || 0;
+
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/envios?on_conflict=codigo`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': SUPABASE_KEY,
+          'Authorization': `Bearer ${SUPABASE_KEY}`,
+          'Prefer': 'resolution=merge-duplicates,return=representation'
+        },
+        body: JSON.stringify([
+          {
+            codigo: envio.codigo,
+            origen: envio.origen,
+            destino: envio.destino,
+            envoltorio: envio.envoltorio || null,
+            dimensiones: envio.dimensiones || null,
+            peso: envio.peso || null,
+            modalidad: envio.modalidad || null,
+            total: montoNumerico,
+            estado: envio.estado || 'Cotizado',
+            estado_pago: envio.estadoPago || 'COTIZADO',
+            metodo_pago: envio.metodoPago || null,
+            numero_operacion: envio.numeroOperacion || null,
+            fecha: envio.fecha || new Date().toLocaleDateString('es-PE')
+          }
+        ])
+      });
+
+      if (!res.ok) {
+        const errText = await res.text();
+        console.warn('No se pudo guardar en Supabase:', errText);
+      }
+    } catch (err) {
+      console.warn('Error de red al guardar en Supabase:', err);
+    }
+  }
+
+  // 1. Redirección del botón de perfil superior hacia detalle.html
+  const btnProfile = document.getElementById('btnProfile');
+  if (btnProfile) {
+    btnProfile.addEventListener('click', function () {
+      window.location.href = '../detalles/detalle.html';
+    });
+  }
+
+  // 2. Lógica del Cotizador Express
+  const pkgCards = document.querySelectorAll('.pkg-card');
+  const deliveryBtns = document.querySelectorAll('.delivery-btn');
+  const costDisplay = document.getElementById('cost-display');
+  const inpPeso = document.getElementById('inp-peso');
+  const inpLargo = document.getElementById('inp-largo');
+  const inpAncho = document.getElementById('inp-ancho');
+  const inpAlto = document.getElementById('inp-alto');
+  const selectOrigen = document.getElementById('select-origen');
+  const selectDestino = document.getElementById('select-destino');
+  const btnSubmit = document.getElementById('btn-submit');
+
+  let currentPkg = 'sobre';
+  let currentDelivery = 'agencia';
+
+  function calculateCost() {
+    if (!costDisplay) return;
+
+    const peso = parseFloat(inpPeso.value) || 1;
+    const largo = parseFloat(inpLargo.value) || 1;
+    const ancho = parseFloat(inpAncho.value) || 1;
+    const alto = parseFloat(inpAlto.value) || 1;
+
+    const pesoVolumetrico = (largo * ancho * alto) / 6000;
+    const pesoFacturable = Math.max(peso, pesoVolumetrico);
+
+    let baseRate = 10.0;
+
+    if (currentPkg === 'caja') baseRate += 5.0;
+    if (currentPkg === 'bulto') baseRate += 12.0;
+    if (currentDelivery === 'domicilio') baseRate += 7.0;
+    if (selectOrigen && selectDestino && selectOrigen.value !== selectDestino.value) {
+      baseRate += 3.0;
+    }
+    if (pesoFacturable > 1) {
+      baseRate += (pesoFacturable - 1) * 3.5;
+    }
+
+    costDisplay.textContent = `S/ ${baseRate.toFixed(2)}`;
+  }
+
+  pkgCards.forEach((card) => {
+    card.addEventListener('click', () => {
+      pkgCards.forEach((c) => c.classList.remove('active'));
+      card.classList.add('active');
+      currentPkg = card.getAttribute('data-pkg');
+      calculateCost();
+    });
+  });
+
+  deliveryBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      deliveryBtns.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentDelivery = btn.getAttribute('data-delivery');
+      calculateCost();
+    });
+  });
+
+  [inpPeso, inpLargo, inpAncho, inpAlto, selectOrigen, selectDestino].forEach((elem) => {
+    if (elem) {
+      elem.addEventListener('input', calculateCost);
+      elem.addEventListener('change', calculateCost);
+    }
+  });
+
+  if (btnSubmit) {
+    btnSubmit.addEventListener('click', async (e) => {
+      e.preventDefault();
+
+      const activePkgCard = document.querySelector('.pkg-card.active');
+      const envoltorioNombre = activePkgCard?.querySelector('.pkg-title')?.textContent.trim() || currentPkg;
+
+      const activeDeliveryBtn = document.querySelector('.delivery-btn.active');
+      const modalidadNombre = activeDeliveryBtn?.querySelector('span')?.textContent.trim() || currentDelivery;
+
+      const largo = inpLargo?.value || '25';
+      const ancho = inpAncho?.value || '15';
+      const alto = inpAlto?.value || '5';
+      const peso = inpPeso?.value || '1.0';
+
+      const cotizacionData = {
+        codigo: 'SHL-' + Math.floor(100000 + Math.random() * 900000),
+        origen: selectOrigen?.value || 'Huancayo',
+        destino: selectDestino?.value || 'Cusco',
+        envoltorio: envoltorioNombre,
+        dimensiones: `${largo}x${ancho}x${alto} cm`,
+        peso: `${peso} kg`,
+        modalidad: modalidadNombre,
+        estado: 'Cotizado',
+        estadoPago: 'COTIZADO',
+        total: costDisplay ? costDisplay.textContent.trim() : 'S/ 13.00',
+        fecha: new Date().toLocaleString('es-PE')
+      };
+
+      localStorage.setItem('shalom_cotizacion_actual', JSON.stringify(cotizacionData));
+      await guardarEnvioEnSupabase(cotizacionData);
+      window.location.href = './pagos/pago.html';
+    });
+  }
+
+  calculateCost();
+});
