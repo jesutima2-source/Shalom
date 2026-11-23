@@ -1,0 +1,362 @@
+/* --- ESTILOS BASE MÓVIL (Autocontenidos para evitar errores de ruta) --- */
+:root {
+  --primary-red: #d90429;
+  --primary-blue: #0056b3;
+  --bg-dark: #12080a;
+  --card-bg: #ffffff;
+  --text-dark: #1e293b;
+  --input-bg: #f8fafc;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body.mobile-body {
+  background: radial-gradient(circle at center, #2d0b10 0%, #12080a 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 414px;
+  background-color: #1a0c0e;
+  border-radius: 35px;
+  padding: 25px 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+  border: 4px solid #3a1a1e;
+}
+
+/* --- ESTILOS ESPECÍFICOS DE LA PANTALLA DE DETALLE --- */
+.app-header-nav {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px 0;
+}
+
+.back-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #fff;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.main-content {
+  margin-top: 15px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #f1f5f9;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #10b981;
+  border-radius: 50%;
+}
+
+.title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin-bottom: 5px;
+  color: #ffffff;
+}
+
+.subtitle {
+  font-size: 0.75rem;
+  color: #cbd5e1;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.card {
+  background-color: var(--card-bg);
+  border-radius: 20px;
+  padding: 20px;
+  color: var(--text-dark);
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Espacio uniforme entre el avatar, el texto y el QR */
+  padding: 12px 0;
+}
+
+.avatar {
+  width: 45px;
+  height: 45px;
+  background: var(--primary-red);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+/* El bloque de texto se adapta de forma flexible sin desbordarse */
+.profile-info {
+  flex: 1;
+  min-width: 0; /* Crucial para que el texto largo respete el ancho disponible y haga salto de línea limpio */
+}
+
+/* La etiqueta de cliente frecuente */
+.profile-info .tag {
+  display: block;
+  font-size: 11px;
+  color: #666;
+  margin-bottom: 2px;
+}
+
+/* El nombre completo que se ajusta a varias líneas si es largo */
+.profile-info h3 {
+  font-size: 14px; /* Tamaño equilibrado para nombres largos */
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.25;
+  word-break: break-word; /* Rompe palabras largas si es necesario */
+  margin: 0;
+}
+
+.qr-box {
+  flex-shrink: 0; /* Evita que el botón QR se comprima */
+}
+
+.qr-box:hover {
+  opacity: 0.8;
+}
+
+.display-group {
+  margin-bottom: 15px;
+}
+
+.label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.field-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #64748b;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.verified-text-green {
+  font-size: 0.6rem;
+  color: #10b981;
+  font-weight: 700;
+}
+
+.display-box {
+  display: flex;
+  align-items: center;
+  background-color: var(--input-bg);
+  border-radius: 10px;
+  padding: 10px 12px;
+  gap: 10px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  border: 1px solid #e2e8f0;
+}
+
+.input-icon {
+  color: #64748b;
+}
+
+.display-box span {
+  flex-grow: 1;
+}
+
+.check-icon {
+  color: #10b981;
+}
+
+.copy-btn {
+  background: none;
+  border: none;
+  color: var(--primary-blue);
+  cursor: pointer;
+  padding: 4px;
+  font-size: 0.9rem;
+}
+
+.copy-btn:active {
+  transform: scale(1.2);
+}
+
+.badge-secondary {
+  background: #e2e8f0;
+  color: #475569;
+  font-size: 0.6rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+.summary-section {
+  margin-top: 20px;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 15px;
+}
+
+.summary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #64748b;
+  margin-bottom: 10px;
+}
+
+.chip {
+  background: #eff6ff;
+  color: var(--primary-blue);
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.6rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.stat-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 10px 6px;
+  text-align: center;
+}
+
+.stat-card h3 {
+  font-size: 1rem;
+  color: var(--text-dark);
+  margin: 4px 0 2px 0;
+}
+
+.stat-card p {
+  font-size: 0.6rem;
+  color: #64748b;
+}
+
+.icon-blue { color: var(--primary-blue); }
+.icon-orange { color: #d97706; }
+.icon-green { color: #10b981; }
+
+.shipment-card {
+  display: flex;
+  align-items: center;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 10px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.shipment-card:hover {
+  opacity: 0.9;
+}
+
+.red-bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--primary-red);
+}
+
+.shipment-details {
+  margin-left: 8px;
+  font-size: 0.7rem;
+}
+
+.shipment-details strong {
+  display: block;
+  color: var(--text-dark);
+}
+
+.shipment-details p {
+  color: #64748b;
+  font-size: 0.6rem;
+}
+
+.route-tag {
+  margin-left: auto;
+  background: #eff6ff;
+  color: var(--primary-blue);
+  font-size: 0.6rem;
+  padding: 4px 6px;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.nav-arrow {
+  background: none;
+  border: none;
+  color: #cbd5e1;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.btn-logout {
+  width: 100%;
+  background: #fef2f2;
+  color: var(--primary-red);
+  border: 1px solid #fee2e2;
+  padding: 12px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  margin-top: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-logout:hover {
+  background: #fee2e2;
+}

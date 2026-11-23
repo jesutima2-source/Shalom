@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shalom - Pago Realizado</title>
+  <link rel="stylesheet" href="comprobante.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+</head>
+<body class="mobile-body">
+  <div class="app-container">
+    <header class="app-header-nav">
+      <div class="logo">SHALOM<span class="dot">•</span></div>
+      <div class="header-actions">
+        <button
+          class="support-circle-btn"
+          id="btnAtencion"
+          title="Atención al Cliente"
+          aria-label="Atención al Cliente"
+          onclick="window.location.href='../../atencion_cliente/atencion.html'">
+          <i class="fa-solid fa-headset"></i>
+        </button>
+        <button
+          class="profile-btn"
+          id="btnProfile"
+          title="Detalle de usuario"
+          aria-label="Perfil"
+          onclick="window.location.href='../../detalles/detalle.html'">
+          <i class="fa-solid fa-user"></i>
+        </button>
+      </div>
+    </header>
+
+    <div class="scrollable-content">
+      <main class="main-content">
+        <div class="card">
+          <div class="paid-banner">
+            <div class="paid-icon">
+              <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h2>¡Pago realizado!</h2>
+            <p>Tu cotización y comprobante están listos</p>
+            <span class="paid-chip" id="compCodigo">SHL-000000 · PAGADO</span>
+          </div>
+
+          <div class="receipt-box">
+            <div class="receipt-row">
+              <span>Ruta</span>
+              <strong id="compRuta">Huancayo → Cusco</strong>
+            </div>
+            <div class="receipt-row">
+              <span>Envoltorio / Peso</span>
+              <strong id="compPaquete">Sobre · 1.0 kg</strong>
+            </div>
+            <div class="receipt-row">
+              <span>Dimensiones</span>
+              <strong id="compDimensiones">25x15x5 cm</strong>
+            </div>
+            <div class="receipt-row">
+              <span>Modalidad</span>
+              <strong id="compModalidad">En agencia</strong>
+            </div>
+            <div class="receipt-row">
+              <span>Método</span>
+              <strong id="compMetodo">Yape QR</strong>
+            </div>
+            <div class="receipt-row">
+              <span>N° Operación</span>
+              <strong id="compOperacion">OP-000000</strong>
+            </div>
+            <div class="receipt-row total-row">
+              <span>Total pagado</span>
+              <strong id="compTotal">S/ 13.00</strong>
+            </div>
+          </div>
+
+          <div class="action-buttons-grid">
+            <button type="button" class="action-btn-light" id="btnDescargarPdf">
+              <i class="fa-solid fa-download"></i> Descargar PDF
+            </button>
+            <button type="button" class="action-btn-red" id="btnCompartirPdf">
+              <i class="fa-solid fa-share-nodes"></i> Compartir
+            </button>
+          </div>
+
+          <button type="button" class="secondary-link-btn" onclick="window.location.href='../cotizacion.html'">
+            Realizar otra cotización
+          </button>
+        </div>
+      </main>
+    </div>
+
+    <nav class="bottom-nav">
+      <a href="../../envios/envio.html" class="nav-item">
+        <i class="fa-solid fa-box"></i>
+        <span>Mis envíos</span>
+      </a>
+      <a href="../cotizacion.html" class="nav-item active">
+        <i class="fa-solid fa-calculator"></i>
+        <span>Cotización</span>
+      </a>
+      <a href="../../rastreo/rastreo.html" class="nav-item">
+        <i class="fa-solid fa-barcode"></i>
+        <span>Rastreo</span>
+      </a>
+      <a href="../../ubicacion/ubicacion.html" class="nav-item">
+        <i class="fa-solid fa-location-dot"></i>
+        <span>Agencias</span>
+      </a>
+    </nav>
+  </div>
+
+  <script src="comprobante.js"></script>
+</body>
+</html>

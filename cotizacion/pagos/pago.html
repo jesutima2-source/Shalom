@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shalom - Método de Pago</title>
+  <link rel="stylesheet" href="pago.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body class="mobile-body">
+  <div class="app-container">
+    <header class="app-header-nav">
+      <div class="header-left">
+        <button class="back-btn" id="btnBack" title="Volver a cotización" aria-label="Volver">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <div class="logo">SHALOM<span class="dot">•</span></div>
+      </div>
+      <div class="header-actions">
+        <button
+          class="support-circle-btn"
+          id="btnAtencion"
+          title="Atención al Cliente"
+          aria-label="Atención al Cliente"
+          onclick="window.location.href='../../atencion_cliente/atencion.html'">
+          <i class="fa-solid fa-headset"></i>
+        </button>
+        <button
+          class="profile-btn"
+          id="btnProfile"
+          title="Detalle de usuario"
+          aria-label="Perfil"
+          onclick="window.location.href='../../detalles/detalle.html'">
+          <i class="fa-solid fa-user"></i>
+        </button>
+      </div>
+    </header>
+
+    <div class="scrollable-content">
+      <main class="main-content">
+        <div class="badge">
+          <span class="status-dot"></span>
+          <span>PASARELA DE PAGO EXPRESS</span>
+        </div>
+        <h1 class="title">Método de Pago</h1>
+        <p class="subtitle">Completa tu pago para generar tu comprobante PDF</p>
+
+        <div class="card">
+          <div class="summary-box">
+            <div>
+              <span class="small-label">RUTA SELECCIONADA</span>
+              <strong id="resumenRuta">Huancayo → Cusco</strong>
+              <p id="resumenDetalle">Sobre · 1.0 kg · En agencia</p>
+            </div>
+            <div class="amount-box">
+              <span class="small-label">TOTAL</span>
+              <strong id="resumenTotal">S/ 13.00</strong>
+            </div>
+          </div>
+
+          <label class="section-label">ELIGE CÓMO PAGAR</label>
+          <div class="method-tabs">
+            <button type="button" class="method-btn active" data-method="Yape QR">
+              <i class="fa-solid fa-qrcode"></i> Yape QR
+            </button>
+            <button type="button" class="method-btn" data-method="Plin">
+              <i class="fa-solid fa-mobile-screen-button"></i> Plin
+            </button>
+            <button type="button" class="method-btn" data-method="Agencia">
+              <i class="fa-solid fa-shop"></i> En agencia
+            </button>
+          </div>
+
+          <!-- Panel Yape QR -->
+          <div class="payment-panel" id="panelYape">
+            <div class="qr-card">
+              <img src="./imagen_qr/qr_jesus.jpeg" alt="QR Yape" class="qr-image" />
+            </div>
+            <p class="pay-instruction">
+              Escanea el QR o yapea al número <strong>971101173</strong>
+            </p>
+            <input
+              type="text"
+              id="inpOperacion"
+              class="input-field"
+              placeholder="N° de operación (mín. 5 caracteres)"
+            />
+            <label class="check-confirm">
+              <input type="checkbox" id="chkDeposito" />
+              <span>Confirmo que ya deposité el monto exacto al <strong>971101173</strong></span>
+            </label>
+          </div>
+
+          <!-- Panel Plin / Agencia -->
+          <div class="payment-panel hidden" id="panelAlterno">
+            <p class="pay-instruction" id="textoAlterno">
+              Realiza la transferencia al <strong>971101173</strong> y confirma para emitir tu comprobante.
+            </p>
+            <div id="bloqueOperacionAlterno">
+              <input
+                type="text"
+                id="inpOperacionAlterno"
+                class="input-field"
+                placeholder="N° de operación Plin (mín. 5 caracteres)"
+              />
+              <label class="check-confirm">
+                <input type="checkbox" id="chkDepositoAlterno" />
+                <span>Confirmo que ya realicé la transferencia al <strong>971101173</strong></span>
+              </label>
+            </div>
+          </div>
+
+          <p id="msgErrorPago" class="error-msg hidden"></p>
+
+          <button type="button" class="primary-btn" id="btnConfirmarPago">
+            <span>Confirmar pago</span>
+            <i class="fa-solid fa-check-circle"></i>
+          </button>
+        </div>
+      </main>
+    </div>
+
+    <nav class="bottom-nav">
+      <a href="../../envios/envio.html" class="nav-item">
+        <i class="fa-solid fa-box"></i>
+        <span>Mis envíos</span>
+      </a>
+      <a href="../cotizacion.html" class="nav-item active">
+        <i class="fa-solid fa-calculator"></i>
+        <span>Cotización</span>
+      </a>
+      <a href="../../rastreo/rastreo.html" class="nav-item">
+        <i class="fa-solid fa-barcode"></i>
+        <span>Rastreo</span>
+      </a>
+      <a href="../../ubicacion/ubicacion.html" class="nav-item">
+        <i class="fa-solid fa-location-dot"></i>
+        <span>Agencias</span>
+      </a>
+    </nav>
+  </div>
+
+  <script src="pago.js"></script>
+</body>
+</html>

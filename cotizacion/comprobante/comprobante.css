@@ -1,0 +1,264 @@
+:root {
+  --bg-outer: #14090b;
+  --bg-frame: #1c0e11;
+  --frame-border: #331c20;
+  --header-bg: #131622;
+  --card-bg: #ffffff;
+  --surface-soft: #f5f7fb;
+  --text-dark: #111827;
+  --text-muted: #6b7280;
+  --primary-blue: #0d5bc6;
+  --shalom-red: #d60c23;
+  --success-green: #0f9d58;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body.mobile-body {
+  background-color: var(--bg-outer);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 12px;
+  color: #ffffff;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 430px;
+  min-height: 820px;
+  background-color: var(--bg-frame);
+  border-radius: 34px;
+  border: 2.5px solid var(--frame-border);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75);
+}
+
+.app-header-nav {
+  background-color: var(--header-bg);
+  padding: 18px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.logo {
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+}
+
+.logo .dot {
+  color: var(--shalom-red);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.support-circle-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #291b1e;
+  border: 1.5px solid #42272c;
+  color: #ffffff;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.support-circle-btn:hover {
+  background-color: #3a2328;
+  border-color: #d60c23;
+  transform: scale(1.05);
+}
+
+.profile-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--shalom-red);
+  border: none;
+  color: #ffffff;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.scrollable-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 16px 20px;
+}
+
+.card {
+  background-color: var(--card-bg);
+  color: var(--text-dark);
+  border-radius: 26px;
+  padding: 22px 18px;
+}
+
+.paid-banner {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.paid-icon {
+  font-size: 44px;
+  color: var(--success-green);
+  margin-bottom: 8px;
+}
+
+.paid-banner h2 {
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.paid-banner p {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  margin-top: 3px;
+}
+
+.paid-chip {
+  display: inline-block;
+  margin-top: 10px;
+  background: #dcfce7;
+  color: #166534;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 999px;
+}
+
+.receipt-box {
+  background: var(--surface-soft);
+  border-radius: 16px;
+  padding: 14px;
+  margin-bottom: 16px;
+}
+
+.receipt-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 12.5px;
+}
+
+.receipt-row:last-child {
+  border-bottom: none;
+}
+
+.receipt-row span {
+  color: var(--text-muted);
+}
+
+.receipt-row strong {
+  color: var(--text-dark);
+}
+
+.total-row strong {
+  font-size: 16px;
+  color: var(--primary-blue);
+  font-weight: 800;
+}
+
+.action-buttons-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.action-btn-light {
+  background: #eff6ff;
+  color: var(--primary-blue);
+  border: 1px solid #bfdbfe;
+  border-radius: 12px;
+  padding: 12px 10px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+
+.action-btn-red {
+  background: var(--shalom-red);
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 10px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+
+.secondary-link-btn {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  color: #1f2937;
+  border-radius: 12px;
+  padding: 11px;
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Barra inferior igual a cotizacion.html */
+.bottom-nav {
+  background-color: #131622;
+  border-top: 1px solid #262b3d;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 10px 6px 12px;
+  flex-shrink: 0;
+}
+
+.nav-item {
+  color: #9ca3af;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-size: 11px;
+  padding: 4px 0;
+}
+
+.nav-item i {
+  font-size: 17px;
+}
+
+.nav-item.active {
+  color: #ffffff;
+  font-weight: 700;
+}
